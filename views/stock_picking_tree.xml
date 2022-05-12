@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="vpicktree_inheritd" model="ir.ui.view">
+        <field name="name">stock.picking.tree</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref ="stock.vpicktree"/>	
+        <field name="arch" type="xml">
+            <xpath expr ="//field[@name='json_popover']" position="after">
+                <field name='picking_type_code' invisible="1"/>
+                <field name="x_origin" attrs="{'invisible': [('picking_type_code', '!=', 'internal')]}"/>
+                <field name='move_line_ids' widget="many2many_tags" />
+            </xpath>
+        </field>   
+    </record>
+</odoo>
